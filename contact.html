@@ -5,6 +5,33 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Senin</title>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript">
+      (function() {
+          // https://dashboard.emailjs.com/admin/account
+          emailjs.init({
+            publicKey: "yw4_fNV-jHfhRw4Uj",
+          });
+      })();
+  </script>
+  <script type="text/javascript">
+      window.onload = function() {
+          document.getElementById('contact-form').addEventListener('submit', function(event) {
+              event.preventDefault();
+              // these IDs from the previous steps
+              emailjs.sendForm('senin_id', 'contact_form', this)
+                  .then(() => {
+                      console.log('SUCCESS!');
+                  }, (error) => {
+                      console.log('FAILED...', error);
+                  });
+          });
+      }
+  </script>
+
+
+
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -84,33 +111,33 @@
       <div  data-aos="fade-up" data-aos-delay="100">
         <div class="row gy-4 d-flex-md  justify-content-center">
           <div class="col-lg-7">
-            <form action="https://formsubmit.co/seninsimon002@gmail.com" method="post" id="contact-form" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+            <form  id="contact-form" class="php-email-form"  onsubmit="return submitted()">
               <div class="row gy-4">
                 <div class="col-md-6">
                   <label for="name-field" class="pb-2">Your Name</label>
-                  <input type="text" name="name" id="name-field" class="form-control" required="">
+                  <input type="text" name="user_name" id="name-field" class="form-control"   >
                 </div>
             
                 <div class="col-md-6">
                   <label for="email-field" class="pb-2">Your Email</label>
-                  <input type="email" class="form-control" name="email" id="email-field" required="">
+                  <input type="email" class="form-control" name="user_email" id="email-field"  >
                 </div>
             
                 <div class="col-md-12">
                   <label for="subject-field" class="pb-2">Subject</label>
-                  <input type="text" class="form-control" name="subject" id="subject-field" required="">
+                  <input type="text" class="form-control" name="subject" id="subject-field"  >
                 </div>
             
                 <div class="col-md-12">
                   <label for="message-field" class="pb-2">Message</label>
-                  <textarea class="form-control" name="message" rows="10" id="message-field" required=""></textarea>
+                  <textarea class="form-control" name="message" rows="10" id="message-field" ></textarea>
                 </div>
             
                 <div class="col-md-12 text-center">
                   <div class="loading">Loading</div>
                   <div class="error-message" style="display: none;"></div>
                   <div class="sent-message" style="display: none;"></div>
-                  <button type="submit">Send Message</button>
+                  <button type="submit" value="Send">Send Message</button>
                 </div>
               </div>
             </form>
@@ -148,6 +175,50 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+    // Get form values
+    const username = document.getElementById('name-field').value.trim();
+    const email = document.getElementById('email-field').value.trim();
+    const subject = document.getElementById('subject-field').value.trim();
+    const message = document.getElementById('message-field').value.trim();
+
+    // Validation checks
+    if (username === '') {
+        alert('Username is required.');
+        event.preventDefault(); // Prevent form submission
+        return;
+    }
+    
+    if (email === '') {
+        alert('Email is required.');
+        event.preventDefault(); // Prevent form submission
+        return;
+    }
+    
+    if (subject === '') {
+        alert('subject is required.');
+        event.preventDefault(); // Prevent form submission
+        return;
+    }
+
+
+    if (message === '') {
+        alert('message is required.');
+        event.preventDefault(); // Prevent form submission
+        return;
+    }
+
+
+    function submitted()
+    {
+      alert("submitted successfully")
+    }
+    // If all checks pass, the form will be submitted
+});
+
+  </script>
 
 
 </body>
