@@ -115,7 +115,7 @@
               <div class="row gy-4">
                 <div class="col-md-6">
                   <label for="name-field" class="pb-2">Your Name</label>
-                  <input type="text" name="user_name" id="name-field" class="form-control"   >
+                  <input type="text" name="user_name" id="name-field" class="form-control"  pattern="[A-Za-z\s]+" required>
                 </div>
             
                 <div class="col-md-6">
@@ -187,26 +187,26 @@
     // Validation checks
     if (username === '') {
         alert('Username is required.');
-        event.preventDefault(); // Prevent form submission
+        event.preventDefault(); //
         return;
     }
     
     if (email === '') {
         alert('Email is required.');
-        event.preventDefault(); // Prevent form submission
+        event.preventDefault(); //
         return;
     }
     
     if (subject === '') {
         alert('subject is required.');
-        event.preventDefault(); // Prevent form submission
+        event.preventDefault(); //
         return;
     }
 
 
     if (message === '') {
         alert('message is required.');
-        event.preventDefault(); // Prevent form submission
+        event.preventDefault(); //
         return;
     }
 
